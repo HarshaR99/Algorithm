@@ -9,7 +9,7 @@ class Graph:
             self.graph[from_node].sort()
 
 class DFS:
-    def __init__(self,graph):
+    def __init__(self,graph): # graph is an instance of Graph
         self.graph = graph
         self.visited = [False]*len(self.graph.graph)
 
