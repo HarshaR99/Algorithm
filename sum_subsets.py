@@ -1,16 +1,17 @@
-def subsetsum(array, num=21):
-    if num < 0:
-        return
-    if len(array) == 0:
-        if num == 0:
-            yield []
-        return
-    for solution in subsetsum(array[1:], num):
-        yield solution
-    for solution in subsetsum(array[1:], num - array[0]):
-        yield [array[0]] + solution
+def isSubsetSum(set, n, sum) : 
+      
+    if (sum == 0) : 
+        return True
+    if (n == 0 and sum != 0) : 
+        return False
+    if (set[n - 1] > sum) : 
+        return isSubsetSum(set, n - 1, sum)    
+    return isSubsetSum(set, n-1, sum) or isSubsetSum(set, n-1, sum-set[n-1])
 
-
-arr = list(map(int, input('Enter the array: ').split()))
-n = int(input('Enter the sum:'))
-print(*list(subsetsum(arr, n)))
+set = [3, 34, 4, 12, 5, 2] 
+sum = 9
+n = len(set) 
+if (isSubsetSum(set, n, sum) == True) : 
+    print("Found a subset with given sum") 
+else : 
+    print("No subset with given sum") 
